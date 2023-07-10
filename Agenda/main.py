@@ -28,7 +28,7 @@ style.layout("Transparent.Tlabelframe",
 
 
 def BANCO():
-    conexao = sqlite3.connect("Projetos_Pessoais\Agenda\Banco de Dados\database.db")
+    conexao = sqlite3.connect("Banco de Dados/database.db")
     cursor = conexao.cursor()
     cursor.execute("""create table if not exists LOGIN
                    (CPF INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -40,7 +40,7 @@ def BANCO():
 
 
 def salvar_cadastro():
-    conexao = sqlite3.connect("Projetos_Pessoais\Agenda\Banco de Dados\database.db")
+    conexao = sqlite3.connect("Banco de Dados/database.db")
     cursor = conexao.cursor()
     cursor.execute("""
                    insert into LOGIN
@@ -77,7 +77,7 @@ def MAIN_ADM():
     lf_transparente = ttk.Labelframe(janela, text="Login", style="Transparent.TLabelframe")
     lf_transparente.place(relx=0.5, rely=0.45, anchor=tk.CENTER)
 
-    im_main_admin = Image.open("Projetos_Pessoais\Agenda\Imagens\Main.jpg")
+    im_main_admin = Image.open("Imagens/Main.jpg")
     ft_main_admin = ImageTk.PhotoImage(im_main_admin)
     lb_main_admin = tk.Label(lf_main_adm, image=ft_main_admin)
     lb_main_admin.grid(row=0, column=0, padx=10, pady=10)
@@ -110,7 +110,7 @@ def login():
     CPF = entry_login.get()
     SENHA = entry_senha.get()
 
-    conn = sqlite3.connect("Projetos_Pessoais\Agenda\Banco de Dados\database.db")
+    conn = sqlite3.connect("Banco de Dados/database.db")
     cursor = conn.cursor()
 
     cursor.execute("SELECT * FROM LOGIN WHERE CPF=? AND SENHA=?", (CPF, SENHA))
@@ -137,7 +137,7 @@ def cadastro():
     lf_im_cadastro = LabelFrame(janela)
     lf_im_cadastro.place(relx=0.5, rely=0.5, anchor=CENTER)
 
-    im_cadastro = Image.open("Projetos_Pessoais\Agenda\Imagens\Cadastro.png")
+    im_cadastro = Image.open("Imagens/Cadastro.png")
     ft_cadastro = ImageTk.PhotoImage(im_cadastro)
     lb_cadastro = tk.Label(lf_im_cadastro, image=ft_cadastro)
     lb_cadastro.grid(row=0, column=0, padx=10, pady=10)
@@ -211,7 +211,7 @@ def MAIN():
 def barra_Lateral():
     global im_logo, ft_logo, lb_logo
 
-    im_logo = Image.open("Projetos_Pessoais\Agenda\Imagens\Logo.jpeg").resize((200, 200))
+    im_logo = Image.open("Imagens/Logo.jpeg").resize((200, 200))
     ft_logo = ImageTk.PhotoImage(im_logo)
     lb_logo = tk.Label(lf_menu, image=ft_logo)
     lb_logo.grid(row=0, column=0, padx=10, pady=10)
